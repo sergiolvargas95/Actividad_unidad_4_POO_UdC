@@ -1,15 +1,17 @@
 package co.edu.udec.poo.modelos.entidades;
 
+import java.util.HashMap;
+
 /**
  *
  * @author redhood
  */
 public class Book {
-    private int id;
+    private static int idCounter = 0;
     private String title;
     private String author;
     private int pages;
-    private Library library;
+    public static HashMap<Integer, Book> booksDB;
 
     public String getAuthor() {
         return author;
@@ -18,21 +20,17 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+    
+    public static int generateId() {
+        return ++idCounter;
+    }
 
     public int getId() {
-        return id;
+        return idCounter;
     }
 
     public void setId(int id) {
-        this.id = id;
-    }
-
-    public Library getLibrary() {
-        return library;
-    }
-
-    public void setLibrary(Library library) {
-        this.library = library;
+        this.idCounter = id;
     }
 
     public int getPages() {
