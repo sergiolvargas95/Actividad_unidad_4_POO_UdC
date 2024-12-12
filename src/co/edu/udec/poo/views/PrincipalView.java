@@ -32,12 +32,13 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         BarraMenu = new javax.swing.JMenuBar();
         menuBook = new javax.swing.JMenu();
-        menuSearchBook = new javax.swing.JMenu();
-        itemSearchBookByAuthor = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itemSearchBook = new javax.swing.JMenuItem();
         itemAddBook = new javax.swing.JMenuItem();
         itemEditBook = new javax.swing.JMenuItem();
         itemDeleteBook = new javax.swing.JMenuItem();
+        menuSearchBook = new javax.swing.JMenu();
+        itemSearchBookByAuthor = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuLoans = new javax.swing.JMenu();
         menuSearchLoan = new javax.swing.JMenu();
         itemSearchLoanByDate = new javax.swing.JMenuItem();
@@ -63,17 +64,19 @@ public class PrincipalView extends javax.swing.JFrame {
         setTitle("Biblioteca Digital");
 
         menuBook.setText("Books");
+        menuBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBookActionPerformed(evt);
+            }
+        });
 
-        menuSearchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-busqueda-24.png"))); // NOI18N
-        menuSearchBook.setText("Search Books");
-
-        itemSearchBookByAuthor.setText("By Title");
-        menuSearchBook.add(itemSearchBookByAuthor);
-
-        jMenuItem3.setText("By Author");
-        menuSearchBook.add(jMenuItem3);
-
-        menuBook.add(menuSearchBook);
+        itemSearchBook.setText("Search Book");
+        itemSearchBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSearchBookActionPerformed(evt);
+            }
+        });
+        menuBook.add(itemSearchBook);
 
         itemAddBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-add-24.png"))); // NOI18N
         itemAddBook.setText("Add Book");
@@ -101,6 +104,17 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
         menuBook.add(itemDeleteBook);
+
+        menuSearchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icons-reports.png"))); // NOI18N
+        menuSearchBook.setText("Reports Books");
+
+        itemSearchBookByAuthor.setText("By Title");
+        menuSearchBook.add(itemSearchBookByAuthor);
+
+        jMenuItem3.setText("By Author");
+        menuSearchBook.add(jMenuItem3);
+
+        menuBook.add(menuSearchBook);
 
         BarraMenu.add(menuBook);
 
@@ -242,7 +256,9 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEditBookActionPerformed
 
     private void itemAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddBookActionPerformed
-        // TODO add your handling code here:
+        ViewBooks viewBooks = new ViewBooks(this, true);
+        viewBooks.setLocationRelativeTo(this);
+        viewBooks.setVisible(true);
     }//GEN-LAST:event_itemAddBookActionPerformed
 
     private void itemDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteBookActionPerformed
@@ -267,6 +283,14 @@ public class PrincipalView extends javax.swing.JFrame {
         viewReports.setLocationRelativeTo(this);
         viewReports.setVisible(true);
     }//GEN-LAST:event_itemReportesTodosUsersActionPerformed
+
+    private void itemSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSearchBookActionPerformed
+
+    private void menuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuBookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +342,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemReportesTodosUsers;
     private javax.swing.JMenuItem itemReportesUsersByID;
     private javax.swing.JMenuItem itemReportesUsersByName;
+    private javax.swing.JMenuItem itemSearchBook;
     private javax.swing.JMenuItem itemSearchBookByAuthor;
     private javax.swing.JMenuItem itemSearchLoanByDate;
     private javax.swing.JMenuItem itemSearchLoanByUser;

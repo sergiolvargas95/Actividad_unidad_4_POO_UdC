@@ -13,27 +13,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Books"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuBookActionPerformed"/>
+          </Events>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="menuSearchBook">
+            <MenuItem class="javax.swing.JMenuItem" name="itemSearchBook">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/co/edu/udec/poo/views/icons/icon-busqueda-24.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Search Books"/>
+                <Property name="text" type="java.lang.String" value="Search Book"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="itemSearchBookByAuthor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="By Title"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="By Author"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemSearchBookActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemAddBook">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -67,6 +58,26 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemDeleteBookActionPerformed"/>
               </Events>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="menuSearchBook">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/co/edu/udec/poo/views/icons/icons-reports.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Reports Books"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemSearchBookByAuthor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="By Title"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="By Author"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuLoans">

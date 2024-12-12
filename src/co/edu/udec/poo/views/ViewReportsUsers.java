@@ -5,6 +5,8 @@
 package co.edu.udec.poo.views;
 
 import co.edu.udec.poo.modelos.entidades.User;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -129,7 +131,8 @@ public class ViewReportsUsers extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        List<User> usersList = (List)User.usersDB.values();
+        Collection<User> datos = User.usersDB.values();
+        List<User> usersList = new ArrayList(datos);
         
         String columns[] = {"CEDULA", "NOMBRE", "EMAIL", "TELEFONO"};
         int totalUsuarios = usersList.size();
