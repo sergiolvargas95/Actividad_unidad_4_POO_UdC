@@ -5,15 +5,16 @@ package co.edu.udec.poo.modelos.entidades;
  * @author redhood
  */
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 public class Loan {
     private int id;
-    private int idBiblioteca;
     private User user;
     private List<Book> books;
     private LocalDate LoanDate;
     private LocalDate DueDate;
+    public static HashMap<String, Loan> loansDB; 
 
     public User getUser() {
         return user;
@@ -29,14 +30,6 @@ public class Loan {
 
     public void setLoanDate(LocalDate loanDate) {
         LoanDate = loanDate;
-    }
-
-    public int getIdBiblioteca() {
-        return idBiblioteca;
-    }
-
-    public void setIdBiblioteca(int idBiblioteca) {
-        this.idBiblioteca = idBiblioteca;
     }
 
     public int getId() {
@@ -62,4 +55,12 @@ public class Loan {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+    
+    public int generateLoanId() {
+        if (loansDB == null) {
+        loansDB = new HashMap<>();
+    }
+    return loansDB.size() + 1;
+    }
+
 }

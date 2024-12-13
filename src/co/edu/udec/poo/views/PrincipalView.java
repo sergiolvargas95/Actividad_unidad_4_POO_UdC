@@ -5,6 +5,7 @@
 package co.edu.udec.poo.views;
 
 import co.edu.udec.poo.modelos.entidades.Book;
+import co.edu.udec.poo.modelos.entidades.Loan;
 import co.edu.udec.poo.modelos.entidades.User;
 import javax.swing.JOptionPane;
 
@@ -41,12 +42,12 @@ public class PrincipalView extends javax.swing.JFrame {
         itemSearchAllBooks = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         menuLoans = new javax.swing.JMenu();
-        menuSearchLoan = new javax.swing.JMenu();
-        itemSearchLoanByDate = new javax.swing.JMenuItem();
-        itemSearchLoanByUser = new javax.swing.JMenuItem();
         itemAddLoan = new javax.swing.JMenuItem();
         itemEditLoan = new javax.swing.JMenuItem();
         itemDeleteLoan = new javax.swing.JMenuItem();
+        menuSearchLoan = new javax.swing.JMenu();
+        itemReportsLoanAll = new javax.swing.JMenuItem();
+        itemSearchLoanByUser = new javax.swing.JMenuItem();
         menuUsers = new javax.swing.JMenu();
         itemSearchUser = new javax.swing.JMenuItem();
         itemAddUser = new javax.swing.JMenuItem();
@@ -127,16 +128,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         menuLoans.setText("Loans");
 
-        menuSearchLoan.setText("Search Loan");
-
-        itemSearchLoanByDate.setText("By Date");
-        menuSearchLoan.add(itemSearchLoanByDate);
-
-        itemSearchLoanByUser.setText("By User");
-        menuSearchLoan.add(itemSearchLoanByUser);
-
-        menuLoans.add(menuSearchLoan);
-
+        itemAddLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-add-24.png"))); // NOI18N
         itemAddLoan.setText("Add Loan");
         itemAddLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +137,7 @@ public class PrincipalView extends javax.swing.JFrame {
         });
         menuLoans.add(itemAddLoan);
 
+        itemEditLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-editar-24.png"))); // NOI18N
         itemEditLoan.setText("Edit Loan");
         itemEditLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +146,30 @@ public class PrincipalView extends javax.swing.JFrame {
         });
         menuLoans.add(itemEditLoan);
 
+        itemDeleteLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-basura-24.png"))); // NOI18N
         itemDeleteLoan.setText("Delete Loan");
+        itemDeleteLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDeleteLoanActionPerformed(evt);
+            }
+        });
         menuLoans.add(itemDeleteLoan);
+
+        menuSearchLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icons-reports.png"))); // NOI18N
+        menuSearchLoan.setText("Reports Loan");
+
+        itemReportsLoanAll.setText("All");
+        itemReportsLoanAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsLoanAllActionPerformed(evt);
+            }
+        });
+        menuSearchLoan.add(itemReportsLoanAll);
+
+        itemSearchLoanByUser.setText("By User");
+        menuSearchLoan.add(itemSearchLoanByUser);
+
+        menuLoans.add(menuSearchLoan);
 
         BarraMenu.add(menuLoans);
 
@@ -251,11 +266,24 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEditUserActionPerformed
 
     private void itemAddLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddLoanActionPerformed
-        // TODO add your handling code here:
+        if (User.usersDB == null || User.usersDB.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No hay usuarios registrados. Por favor, registre usuarios antes de realizar un préstamo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Validar si hay libros registrados
+    if (Book.booksDB == null || Book.booksDB.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No hay libros registrados. Por favor, registre libros antes de realizar un préstamo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+        ViewLoans viewLoans = new ViewLoans(this, true);
+        viewLoans.setLocationRelativeTo(this);
+        viewLoans.setVisible(true);
     }//GEN-LAST:event_itemAddLoanActionPerformed
 
     private void itemEditLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditLoanActionPerformed
-        // TODO add your handling code here:
+        itemAddLoanActionPerformed(evt);
     }//GEN-LAST:event_itemEditLoanActionPerformed
 
     private void itemEditBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditBookActionPerformed
@@ -310,6 +338,21 @@ public class PrincipalView extends javax.swing.JFrame {
         viewReports.setVisible(true);
     }//GEN-LAST:event_itemSearchAllBooksActionPerformed
 
+    private void itemReportsLoanAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsLoanAllActionPerformed
+        if(Loan.loansDB == null || Loan.loansDB.isEmpty()) {
+          JOptionPane.showMessageDialog(this, "No existen prestamos en el sistema.", "Resultado Negativo", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        
+        ViewReportsLoan viewReports = new ViewReportsLoan(this, true);
+        viewReports.setLocationRelativeTo(this);
+        viewReports.setVisible(true);
+    }//GEN-LAST:event_itemReportsLoanAllActionPerformed
+
+    private void itemDeleteLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteLoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemDeleteLoanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,9 +403,9 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemReportesTodosUsers;
     private javax.swing.JMenuItem itemReportesUsersByID;
     private javax.swing.JMenuItem itemReportesUsersByName;
+    private javax.swing.JMenuItem itemReportsLoanAll;
     private javax.swing.JMenuItem itemSearchAllBooks;
     private javax.swing.JMenuItem itemSearchBook;
-    private javax.swing.JMenuItem itemSearchLoanByDate;
     private javax.swing.JMenuItem itemSearchLoanByUser;
     private javax.swing.JMenuItem itemSearchUser;
     private javax.swing.JMenuItem jMenuItem1;
