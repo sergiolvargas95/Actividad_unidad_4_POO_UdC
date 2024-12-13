@@ -342,6 +342,7 @@ public class ViewUsuarios extends javax.swing.JDialog {
         String msj = "El usuario ha sido guardado con éxito";
         JOptionPane.showMessageDialog(this, msj);
         
+        cleanFields();
     }//GEN-LAST:event_ButtonEditActionPerformed
 
     private void ButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeleteActionPerformed

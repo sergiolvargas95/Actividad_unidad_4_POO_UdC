@@ -40,14 +40,12 @@ public class PrincipalView extends javax.swing.JFrame {
         itemDeleteBook = new javax.swing.JMenuItem();
         menuSearchBook = new javax.swing.JMenu();
         itemSearchAllBooks = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         menuLoans = new javax.swing.JMenu();
         itemAddLoan = new javax.swing.JMenuItem();
         itemEditLoan = new javax.swing.JMenuItem();
         itemDeleteLoan = new javax.swing.JMenuItem();
         menuSearchLoan = new javax.swing.JMenu();
         itemReportsLoanAll = new javax.swing.JMenuItem();
-        itemSearchLoanByUser = new javax.swing.JMenuItem();
         menuUsers = new javax.swing.JMenu();
         itemSearchUser = new javax.swing.JMenuItem();
         itemAddUser = new javax.swing.JMenuItem();
@@ -55,8 +53,6 @@ public class PrincipalView extends javax.swing.JFrame {
         itemDeleteUser = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         itemReportesTodosUsers = new javax.swing.JMenuItem();
-        itemReportesUsersByName = new javax.swing.JMenuItem();
-        itemReportesUsersByID = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         itemHelp = new javax.swing.JMenuItem();
 
@@ -119,14 +115,16 @@ public class PrincipalView extends javax.swing.JFrame {
         });
         menuSearchBook.add(itemSearchAllBooks);
 
-        jMenuItem3.setText("By Author");
-        menuSearchBook.add(jMenuItem3);
-
         menuBook.add(menuSearchBook);
 
         BarraMenu.add(menuBook);
 
         menuLoans.setText("Loans");
+        menuLoans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLoansActionPerformed(evt);
+            }
+        });
 
         itemAddLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-add-24.png"))); // NOI18N
         itemAddLoan.setText("Add Loan");
@@ -166,9 +164,6 @@ public class PrincipalView extends javax.swing.JFrame {
         });
         menuSearchLoan.add(itemReportsLoanAll);
 
-        itemSearchLoanByUser.setText("By User");
-        menuSearchLoan.add(itemSearchLoanByUser);
-
         menuLoans.add(menuSearchLoan);
 
         BarraMenu.add(menuLoans);
@@ -204,6 +199,11 @@ public class PrincipalView extends javax.swing.JFrame {
 
         itemDeleteUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-basura-24.png"))); // NOI18N
         itemDeleteUser.setText("Delete User");
+        itemDeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDeleteUserActionPerformed(evt);
+            }
+        });
         menuUsers.add(itemDeleteUser);
 
         menuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icons-reports.png"))); // NOI18N
@@ -216,17 +216,6 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
         menuReportes.add(itemReportesTodosUsers);
-
-        itemReportesUsersByName.setText("By Name");
-        itemReportesUsersByName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemReportesUsersByNameActionPerformed(evt);
-            }
-        });
-        menuReportes.add(itemReportesUsersByName);
-
-        itemReportesUsersByID.setText("By ID");
-        menuReportes.add(itemReportesUsersByID);
 
         menuUsers.add(menuReportes);
 
@@ -262,7 +251,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAddUserActionPerformed
 
     private void itemEditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditUserActionPerformed
-        // TODO add your handling code here:
+        itemAddUserActionPerformed(evt);
     }//GEN-LAST:event_itemEditUserActionPerformed
 
     private void itemAddLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddLoanActionPerformed
@@ -303,10 +292,6 @@ public class PrincipalView extends javax.swing.JFrame {
     private void itemSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchUserActionPerformed
         itemAddUserActionPerformed(evt);
     }//GEN-LAST:event_itemSearchUserActionPerformed
-
-    private void itemReportesUsersByNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportesUsersByNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemReportesUsersByNameActionPerformed
 
     private void itemReportesTodosUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportesTodosUsersActionPerformed
         if(User.usersDB == null || User.usersDB.isEmpty()) {
@@ -350,8 +335,16 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemReportsLoanAllActionPerformed
 
     private void itemDeleteLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteLoanActionPerformed
-        // TODO add your handling code here:
+        itemAddLoanActionPerformed(evt);
     }//GEN-LAST:event_itemDeleteLoanActionPerformed
+
+    private void menuLoansActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLoansActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuLoansActionPerformed
+
+    private void itemDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteUserActionPerformed
+        itemAddUserActionPerformed(evt);
+    }//GEN-LAST:event_itemDeleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,15 +394,11 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemEditUser;
     private javax.swing.JMenuItem itemHelp;
     private javax.swing.JMenuItem itemReportesTodosUsers;
-    private javax.swing.JMenuItem itemReportesUsersByID;
-    private javax.swing.JMenuItem itemReportesUsersByName;
     private javax.swing.JMenuItem itemReportsLoanAll;
     private javax.swing.JMenuItem itemSearchAllBooks;
     private javax.swing.JMenuItem itemSearchBook;
-    private javax.swing.JMenuItem itemSearchLoanByUser;
     private javax.swing.JMenuItem itemSearchUser;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu menuBook;
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenu menuLoans;
