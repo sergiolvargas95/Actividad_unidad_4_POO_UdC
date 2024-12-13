@@ -4,6 +4,7 @@
  */
 package co.edu.udec.poo.views;
 
+import co.edu.udec.poo.modelos.entidades.Book;
 import co.edu.udec.poo.modelos.entidades.User;
 import javax.swing.JOptionPane;
 
@@ -37,7 +38,7 @@ public class PrincipalView extends javax.swing.JFrame {
         itemEditBook = new javax.swing.JMenuItem();
         itemDeleteBook = new javax.swing.JMenuItem();
         menuSearchBook = new javax.swing.JMenu();
-        itemSearchBookByAuthor = new javax.swing.JMenuItem();
+        itemSearchAllBooks = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         menuLoans = new javax.swing.JMenu();
         menuSearchLoan = new javax.swing.JMenu();
@@ -108,8 +109,13 @@ public class PrincipalView extends javax.swing.JFrame {
         menuSearchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icons-reports.png"))); // NOI18N
         menuSearchBook.setText("Reports Books");
 
-        itemSearchBookByAuthor.setText("By Title");
-        menuSearchBook.add(itemSearchBookByAuthor);
+        itemSearchAllBooks.setText("All");
+        itemSearchAllBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSearchAllBooksActionPerformed(evt);
+            }
+        });
+        menuSearchBook.add(itemSearchAllBooks);
 
         jMenuItem3.setText("By Author");
         menuSearchBook.add(jMenuItem3);
@@ -292,6 +298,17 @@ public class PrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuBookActionPerformed
 
+    private void itemSearchAllBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchAllBooksActionPerformed
+        if(Book.booksDB == null || Book.booksDB.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No existen usuarios en el sistema.", "Resultado Negativo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        ViewReportsBooks viewReports = new ViewReportsBooks(this, true);
+        viewReports.setLocationRelativeTo(this);
+        viewReports.setVisible(true);
+    }//GEN-LAST:event_itemSearchAllBooksActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,8 +359,8 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemReportesTodosUsers;
     private javax.swing.JMenuItem itemReportesUsersByID;
     private javax.swing.JMenuItem itemReportesUsersByName;
+    private javax.swing.JMenuItem itemSearchAllBooks;
     private javax.swing.JMenuItem itemSearchBook;
-    private javax.swing.JMenuItem itemSearchBookByAuthor;
     private javax.swing.JMenuItem itemSearchLoanByDate;
     private javax.swing.JMenuItem itemSearchLoanByUser;
     private javax.swing.JMenuItem itemSearchUser;

@@ -66,10 +66,13 @@
                 <Property name="text" type="java.lang.String" value="Reports Books"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="itemSearchBookByAuthor">
+                <MenuItem class="javax.swing.JMenuItem" name="itemSearchAllBooks">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="By Title"/>
+                    <Property name="text" type="java.lang.String" value="All"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemSearchAllBooksActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
                   <Properties>

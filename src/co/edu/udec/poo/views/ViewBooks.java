@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
  * @author redhood
  */
 public class ViewBooks extends javax.swing.JDialog {
+    
+    Book book;
 
     /**
      * Creates new form ViewBooks
@@ -45,6 +47,8 @@ public class ViewBooks extends javax.swing.JDialog {
         buttonEdit = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        FieldCode = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,12 +82,35 @@ public class ViewBooks extends javax.swing.JDialog {
         });
 
         buttonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-busqueda-24.png"))); // NOI18N
+        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSearchActionPerformed(evt);
+            }
+        });
 
         buttonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-editar-24.png"))); // NOI18N
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
 
         buttonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-basura-24.png"))); // NOI18N
+        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteActionPerformed(evt);
+            }
+        });
 
         buttonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icons8-cancelar-32.png"))); // NOI18N
+        buttonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
+        jLabel6.setText("Código:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,23 +132,31 @@ public class ViewBooks extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FieldNumeroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel4)))
-                            .addComponent(jLabel5))
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FieldNumeroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FieldCode, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 10, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FieldCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(FieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,12 +169,13 @@ public class ViewBooks extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(FieldNumeroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(buttonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
@@ -185,6 +221,7 @@ public class ViewBooks extends javax.swing.JDialog {
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         String titulo = FieldTitle.getText();
         String autor = FieldAutor.getText();
+        String codigo = FieldCode.getText();
         
          Book book = new Book();
   
@@ -198,23 +235,150 @@ public class ViewBooks extends javax.swing.JDialog {
         
         book.setTitle(titulo);
         book.setAuthor(autor);
+        book.setCode(codigo);
         
         
         if (Book.booksDB == null) {
             Book.booksDB = new HashMap<>();
         }
         
-        int id = Book.generateId();
 
-        Book.booksDB.put(id, book);
-        int cuentaLibros = Book.booksDB.size();
-        String msj = """
-                     Este libro fue guardado con éxito.
-                     Existen """ + cuentaLibros + " libros guardados.";
-        JOptionPane.showMessageDialog(this, msj);
+        if(Book.booksDB.containsKey(codigo)) {
+            String msj = "Ya existe un Libro privamiente guardado con este código.";
+            JOptionPane.showMessageDialog(this, msj);
+        } else {
+            Book.booksDB.put(codigo, book);
+            int cuentaLibros = Book.booksDB.size();
+            String msj = """
+                         Este libro fue guardado con éxito.
+                         Existen """ + cuentaLibros + " libros guardados.";
+            JOptionPane.showMessageDialog(this, msj);
 
-        cleanFields();
+            cleanFields();
+        }
     }//GEN-LAST:event_buttonSaveActionPerformed
+
+    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        int option = JOptionPane.showConfirmDialog(this, "¿Desea cerrar?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(option == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_buttonCancelActionPerformed
+
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        String codeInput = FieldCode.getText();
+        
+        if (codeInput == null || codeInput.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Para editar primero debe buscar un libro.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            cleanFields();
+            return;
+        }
+        
+        if (FieldCode.getText().equals(this.book.getCode()) != true) {
+            String msj = "El código no coincide con el código del libro consultado.";
+            JOptionPane.showMessageDialog(this, msj, "Advertencia", JOptionPane.WARNING_MESSAGE);
+            cleanFields();
+            return;
+        }
+        
+        this.book = Book.booksDB.get(codeInput);
+        
+        if (this.book == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró un libro con el código especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+            cleanFields();
+            return;
+        }
+        
+        System.out.println(FieldCode.getText());
+        System.out.println(this.book.getCode());
+
+        // Obtiene los valores de los campos de texto para la edición
+        String title = FieldTitle.getText();
+        String author = FieldAutor.getText();
+        int pages;
+        try {
+            pages = Integer.parseInt(FieldNumeroPaginas.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El número de páginas debe ser un valor numérico válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Actualiza los datos del libro
+        this.book.setTitle(title);
+        this.book.setAuthor(author);
+        this.book.setPages(pages);
+
+        // Vuelve a guardar el libro en la base de datos
+        Book.booksDB.put(codeInput, book);
+
+        // Muestra un mensaje de éxito
+        JOptionPane.showMessageDialog(this, "El libro ha sido editado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpia los campos de texto
+        cleanFields();
+    }//GEN-LAST:event_buttonEditActionPerformed
+
+    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
+        String codeInput = FieldCode.getText();
+
+        // Verifica si el campo de código está vacío
+        if (codeInput == null || codeInput.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un código para buscar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Valida si la base de datos de libros está inicializada y contiene datos
+        if (Book.booksDB == null || Book.booksDB.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No existen libros en la base de datos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+
+        // Busca el libro en la base de datos
+        if (Book.booksDB.containsKey(codeInput)) {
+            this.book = Book.booksDB.get(codeInput);
+
+            FieldTitle.setText(book.getTitle());
+            FieldAutor.setText(book.getAuthor());
+            FieldNumeroPaginas.setText(String.valueOf(book.getPages()));
+
+            // Habilita botones para acciones adicionales
+            buttonDelete.setEnabled(true);
+            buttonEdit.setEnabled(true);
+        } else {
+            // Mensaje si no se encuentra el libro
+            String msj = "No existe un libro con el código " + codeInput;
+            JOptionPane.showMessageDialog(this, msj, "Error", JOptionPane.ERROR_MESSAGE);
+            cleanFields();
+        }
+    }//GEN-LAST:event_buttonSearchActionPerformed
+
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
+        if (FieldCode.getText() == null || FieldCode.getText().isEmpty()) {
+            String msj = "Para eliminar un libro, debe ingresar el código del libro.";
+            JOptionPane.showMessageDialog(this, msj);
+            cleanFields();
+            return;
+        }
+
+        if (!Book.booksDB.containsKey(FieldCode.getText())) {
+            String msj = "No se encontró un libro con ese código.";
+            JOptionPane.showMessageDialog(this, msj);
+            cleanFields();
+            return;
+        }
+
+        String msj = "¿Seguro que desea eliminar este libro?";
+        int response = JOptionPane.showConfirmDialog(this, msj, "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);  
+
+        if (response == JOptionPane.YES_OPTION) {
+            Book.booksDB.remove(FieldCode.getText());
+            int total = Book.booksDB.size();
+            String mjs2 = "Libro eliminado con éxito\n Total de libros: " + total;
+            JOptionPane.showMessageDialog(this, mjs2);
+            cleanFields();
+        }
+    }//GEN-LAST:event_buttonDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +423,7 @@ public class ViewBooks extends javax.swing.JDialog {
     }
     
     public void cleanFields() {
+        FieldCode.setText("");
         FieldTitle.setText("");
         FieldAutor.setText("");
         FieldNumeroPaginas.setText("");
@@ -268,6 +433,7 @@ public class ViewBooks extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FieldAutor;
+    private javax.swing.JTextField FieldCode;
     private javax.swing.JTextField FieldNumeroPaginas;
     private javax.swing.JTextField FieldTitle;
     private javax.swing.JButton buttonCancel;
@@ -280,6 +446,7 @@ public class ViewBooks extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

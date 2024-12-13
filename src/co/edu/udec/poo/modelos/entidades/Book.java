@@ -7,11 +7,11 @@ import java.util.HashMap;
  * @author redhood
  */
 public class Book {
-    private static int idCounter = 0;
+    private String code;
     private String title;
     private String author;
     private int pages;
-    public static HashMap<Integer, Book> booksDB;
+    public static HashMap<String, Book> booksDB;
 
     public String getAuthor() {
         return author;
@@ -20,17 +20,13 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-    
-    public static int generateId() {
-        return ++idCounter;
+
+    public String getCode() {
+        return this.code;
     }
 
-    public int getId() {
-        return idCounter;
-    }
-
-    public void setId(int id) {
-        this.idCounter = id;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getPages() {
