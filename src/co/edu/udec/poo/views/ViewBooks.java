@@ -251,7 +251,7 @@ public class ViewBooks extends javax.swing.JDialog {
             int cuentaLibros = Book.booksDB.size();
             String msj = """
                          Este libro fue guardado con éxito.
-                         Existen """ + cuentaLibros + " libros guardados.";
+                         Existen """ + " " + cuentaLibros + " libros guardados.";
             JOptionPane.showMessageDialog(this, msj);
 
             cleanFields();

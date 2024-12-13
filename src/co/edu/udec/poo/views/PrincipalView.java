@@ -71,6 +71,7 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        itemSearchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/udec/poo/views/icons/icon-busqueda-24.png"))); // NOI18N
         itemSearchBook.setText("Search Book");
         itemSearchBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +259,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEditLoanActionPerformed
 
     private void itemEditBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditBookActionPerformed
-        // TODO add your handling code here:
+        itemAddBookActionPerformed(evt);
     }//GEN-LAST:event_itemEditBookActionPerformed
 
     private void itemAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddBookActionPerformed
@@ -268,7 +269,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAddBookActionPerformed
 
     private void itemDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteBookActionPerformed
-        // TODO add your handling code here:
+        itemAddBookActionPerformed(evt);
     }//GEN-LAST:event_itemDeleteBookActionPerformed
 
     private void itemSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchUserActionPerformed
@@ -291,7 +292,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_itemReportesTodosUsersActionPerformed
 
     private void itemSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSearchBookActionPerformed
-        // TODO add your handling code here:
+        itemAddBookActionPerformed(evt);
     }//GEN-LAST:event_itemSearchBookActionPerformed
 
     private void menuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBookActionPerformed
